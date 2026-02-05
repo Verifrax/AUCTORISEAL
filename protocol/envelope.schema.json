@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://auctoriseal.org/schemas/protocol/envelope.schema.json",
+  "title": "AUCTORISEAL Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "type",
+    "protocol",
+    "trace_id",
+    "ts_ms",
+    "session_id",
+    "state",
+    "payload"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Envelope message category.",
+      "enum": ["event", "response", "error"]
+    },
+    "protocol": {
+      "type": "integer",
+      "description": "Authority protocol version.",
+      "minimum": 1
+    },
+    "trace_id": {
+      "type": "string",
+      "description": "Correlation identifier for request/response/event chains.",
+      "minLength": 8,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "ts_ms": {
+      "type": "integer",
+      "description": "Unix epoch timestamp in milliseconds.",
+      "minimum": 0
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Session or ledger context identifier.",
+      "minLength": 8,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "state": {
+      "type": "string",
+      "description": "Current authority flow state as emitted by the server."
+    },
+    "payload": {
+      "description": "Typed payload; shape depends on envelope type and payload kind.",
+      "type": "object"
+    }
+  }
+}

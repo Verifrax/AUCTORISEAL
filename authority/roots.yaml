@@ -1,0 +1,21 @@
+# AUCTORISEAL ROOT AUTHORITIES
+# This file defines the explicit root authorities.
+# There is no implicit root. If it is not listed here, it has no authority.
+
+version: 1
+
+roots:
+  - authority_id: root.primary
+    description: Primary root authority for AUCTORISEAL
+    issued_at: 1700000000000
+    active: true
+
+  - authority_id: root.emergency
+    description: Emergency-only root authority (freeze / revoke)
+    issued_at: 1700000000000
+    active: true
+
+invariants:
+  - no_implicit_roots
+  - explicit_activation_required
+  - revocation_allowed_under_freeze

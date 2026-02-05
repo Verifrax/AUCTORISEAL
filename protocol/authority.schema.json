@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://auctoriseal.org/schemas/protocol/authority.schema.json",
+  "title": "AUCTORISEAL Authority Grant",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "authority_id",
+    "issuer",
+    "subject",
+    "scope",
+    "constraints",
+    "delegation",
+    "issued_at",
+    "protocol"
+  ],
+  "properties": {
+    "authority_id": {
+      "type": "string",
+      "description": "Unique identifier for this authority grant.",
+      "minLength": 16,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "issuer": {
+      "type": "string",
+      "description": "Identifier of the authority issuing this grant.",
+      "minLength": 3,
+      "maxLength": 128
+    },
+    "subject": {
+      "type": "string",
+      "description": "Entity receiving the authority.",
+      "minLength": 3,
+      "maxLength": 128
+    },
+    "scope": {
+      "type": "array",
+      "description": "Explicit actions this authority may authorize.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "constraints": {
+      "type": "object",
+      "description": "Constraints limiting the granted scope.",
+      "additionalProperties": {
+        "type": ["string", "number", "boolean"]
+      }
+    },
+    "delegation": {
+      "type": "boolean",
+      "description": "Whether this authority may be further delegated."
+    },
+    "issued_at": {
+      "type": "integer",
+      "description": "Unix epoch timestamp (ms) when the authority was granted.",
+      "minimum": 0
+    },
+    "expires_at": {
+      "type": ["integer", "null"],
+      "description": "Optional expiration timestamp (ms). Null means no automatic expiry.",
+      "minimum": 0
+    },
+    "protocol": {
+      "type": "integer",
+      "description": "Authority protocol version.",
+      "minimum": 1
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Non-normative metadata.",
+      "additionalProperties": true
+    }
+  }
+}

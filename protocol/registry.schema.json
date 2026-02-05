@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://auctoriseal.org/schemas/protocol/registry.schema.json",
+  "title": "AUCTORISEAL Registry Reference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "registry_id",
+    "system_id",
+    "authority_seal_id",
+    "status",
+    "recorded_at",
+    "protocol"
+  ],
+  "properties": {
+    "registry_id": {
+      "type": "string",
+      "description": "Unique identifier for the registry record.",
+      "minLength": 16,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "system_id": {
+      "type": "string",
+      "description": "Identifier of the registered system.",
+      "minLength": 3,
+      "maxLength": 128
+    },
+    "authority_seal_id": {
+      "type": "string",
+      "description": "Seal ID asserting legitimacy for this registry entry.",
+      "minLength": 16,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "status": {
+      "type": "string",
+      "description": "Registry status derived from authority.",
+      "enum": ["draft", "active", "frozen", "revoked", "deprecated"]
+    },
+    "recorded_at": {
+      "type": "integer",
+      "description": "Unix epoch timestamp (ms) when recorded.",
+      "minimum": 0
+    },
+    "protocol": {
+      "type": "integer",
+      "description": "Authority protocol version.",
+      "minimum": 1
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Non-normative registry metadata.",
+      "additionalProperties": true
+    }
+  }
+}

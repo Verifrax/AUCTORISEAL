@@ -1,0 +1,27 @@
+# AUCTORISEAL runtime configuration (example)
+# This file is intentionally explicit and minimal.
+# Copy to config.yaml and adjust for deployment.
+
+protocol:
+  version: 1
+
+server:
+  bind: "127.0.0.1"
+  port: 8080
+
+ledger:
+  db_path: "./ledger.sqlite"
+
+security:
+  api_key: ""          # Optional; leave empty to disable API auth
+  rate_limit:
+    requests: 120
+    window_seconds: 60
+
+logging:
+  level: "INFO"
+  json: false
+
+deployment:
+  mode: "managed"      # external | managed | auto
+  notes: "example configuration"

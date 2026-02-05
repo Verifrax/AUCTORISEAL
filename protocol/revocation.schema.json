@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://auctoriseal.org/schemas/protocol/revocation.schema.json",
+  "title": "AUCTORISEAL Authority Revocation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "revocation_id",
+    "revoked_seal_id",
+    "revoked_by",
+    "revoked_at",
+    "protocol"
+  ],
+  "properties": {
+    "revocation_id": {
+      "type": "string",
+      "description": "Globally unique identifier for this revocation event.",
+      "minLength": 16,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "revoked_seal_id": {
+      "type": "string",
+      "description": "Identifier of the authority seal being revoked.",
+      "minLength": 16,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "revoked_by": {
+      "type": "string",
+      "description": "Identifier of the authority performing the revocation.",
+      "minLength": 3,
+      "maxLength": 128
+    },
+    "revoked_at": {
+      "type": "integer",
+      "description": "Unix epoch timestamp (ms) when the revocation took effect.",
+      "minimum": 0
+    },
+    "protocol": {
+      "type": "integer",
+      "description": "Authority protocol version.",
+      "minimum": 1
+    },
+    "reason": {
+      "type": "string",
+      "description": "Human-readable reason for revocation (non-normative).",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional non-normative metadata.",
+      "additionalProperties": true
+    }
+  }
+}

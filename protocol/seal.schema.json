@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://auctoriseal.org/schemas/protocol/seal.schema.json",
+  "title": "AUCTORISEAL Authority Seal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "seal_id",
+    "issued_by",
+    "issued_to",
+    "scope",
+    "constraints",
+    "issued_at",
+    "protocol",
+    "status"
+  ],
+  "properties": {
+    "seal_id": {
+      "type": "string",
+      "description": "Globally unique identifier for the seal.",
+      "minLength": 16,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9._:-]+$"
+    },
+    "issued_by": {
+      "type": "string",
+      "description": "Identifier of the issuing authority.",
+      "minLength": 3,
+      "maxLength": 128
+    },
+    "issued_to": {
+      "type": "string",
+      "description": "Identifier of the subject receiving authority.",
+      "minLength": 3,
+      "maxLength": 128
+    },
+    "scope": {
+      "type": "array",
+      "description": "List of explicitly authorized actions.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "constraints": {
+      "type": "object",
+      "description": "Additional limiting constraints applied to the scope.",
+      "additionalProperties": {
+        "type": ["string", "number", "boolean"]
+      }
+    },
+    "issued_at": {
+      "type": "integer",
+      "description": "Unix epoch timestamp (ms) when the seal was issued.",
+      "minimum": 0
+    },
+    "expires_at": {
+      "type": ["integer", "null"],
+      "description": "Optional expiration timestamp (ms). Null means no automatic expiry.",
+      "minimum": 0
+    },
+    "protocol": {
+      "type": "integer",
+      "description": "Authority protocol version used to issue this seal.",
+      "minimum": 1
+    },
+    "status": {
+      "type": "string",
+      "description": "Current seal status.",
+      "enum": ["active", "revoked"]
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Non-normative, informational metadata.",
+      "additionalProperties": true
+    }
+  }
+}

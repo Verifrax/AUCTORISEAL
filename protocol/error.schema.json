@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://auctoriseal.org/schemas/protocol/error.schema.json",
+  "title": "AUCTORISEAL Protocol Error",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "error_code",
+    "message",
+    "protocol"
+  ],
+  "properties": {
+    "error_code": {
+      "type": "string",
+      "description": "Machine-readable error identifier.",
+      "minLength": 3,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9._-]+$"
+    },
+    "message": {
+      "type": "string",
+      "description": "Human-readable error description.",
+      "minLength": 1,
+      "maxLength": 2048
+    },
+    "protocol": {
+      "type": "integer",
+      "description": "Authority protocol version.",
+      "minimum": 1
+    },
+    "details": {
+      "type": "object",
+      "description": "Optional structured error details.",
+      "additionalProperties": true
+    },
+    "retryable": {
+      "type": "boolean",
+      "description": "Whether the error condition is retryable.",
+      "default": false
+    }
+  }
+}

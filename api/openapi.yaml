@@ -1,0 +1,171 @@
+openapi: 3.0.3
+info:
+  title: AUCTORISEAL API
+  version: "1.0.0"
+  description: >
+    AUCTORISEAL is a private authority and legitimacy system.
+    This API is intentionally read-only and exposes ledger-backed authority facts.
+servers:
+  - url: http://localhost:8080
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [ok]
+                properties:
+                  ok:
+                    type: boolean
+
+  /protocol:
+    get:
+      summary: Protocol information
+      responses:
+        "200":
+          description: Protocol details
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [protocol, schemas]
+                properties:
+                  protocol:
+                    type: integer
+                  schemas:
+                    type: array
+                    items:
+                      type: string
+
+  /ledger/tail:
+    get:
+      summary: Tail ledger events
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 50
+      responses:
+        "200":
+          description: Ledger tail
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [events]
+                properties:
+                  events:
+                    type: array
+                    items:
+                      type: object
+
+  /seals:
+    get:
+      summary: List seals
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [active, revoked]
+        - name: issued_to
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Seal list
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [seals]
+                properties:
+                  seals:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Seal"
+
+  /seals/{seal_id}:
+    get:
+      summary: Get seal by id
+      parameters:
+        - name: seal_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Seal
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Seal"
+        "404":
+          description: Not found
+
+  /validate:
+    post:
+      summary: Validate authority (read-only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [subject, scope, constraints]
+              properties:
+                subject:
+                  type: string
+                scope:
+                  type: string
+                constraints:
+                  type: object
+                  additionalProperties: true
+                at_ms:
+                  type: integer
+      responses:
+        "200":
+          description: Validation decision
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [allowed, reason, freeze_active]
+                properties:
+                  allowed:
+                    type: boolean
+                  reason:
+                    type: string
+                  seal_id:
+                    type: string
+                  issuer:
+                    type: string
+                  fingerprint:
+                    type: string
+                  freeze_active:
+                    type: boolean
+
+components:
+  schemas:
+    Seal:
+      type: object
+      additionalProperties: true
