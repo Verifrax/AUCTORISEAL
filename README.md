@@ -1,22 +1,27 @@
-`markdown
 # AUCTORISEAL
 
-**AUCTORISEAL is the authority and legitimacy layer of the ADJUTORIX ecosystem.**  
-It issues, records, and revokes **Authority Seals** that define **who is allowed to authorize irreversible actions** (e.g., apply, deploy, freeze) under explicit scope and constraints.
+## Authority of Record for Governed Systems
 
-AUCTORISEAL is intentionally **boring**, **strict**, and **auditable**.
+**AUCTORISEAL** is an authority-of-record system.
+It exists to define, record, and verify **who is allowed to authorize actions** in systems capable of irreversible or externally meaningful effects.
+
+> **Use everything freely but if it matters, you must be able to prove who authorized it before execution.**
+
+Execution can be automated.
+Decisions that create responsibility cannot.
 
 ---
 
 ## What AUCTORISEAL Is
 
-AUCTORISEAL provides:
+* An **authority layer**, not an execution engine
+* An **append-only ledger** of authorization decisions
+* A **pre-execution legitimacy system**, not post-incident logging
+* A **deterministic source of truth** for audits, investigations, and replay
 
-- **Authority Seals**: explicit, prior grants of permission with scope + constraints.
-- **Append-only ledger**: every seal issuance and revocation is recorded.
-- **Deterministic validation**: given the same ledger state, validation yields the same result.
-- **Revocation**: authority can be revoked immediately and verifiably.
-- **Integration contracts**: systems (SPEEDKIT, ADJUTORIX, products) defer to AUCTORISEAL for legitimacy.
+AUCTORISEAL answers one question only:
+
+> **Who was authorized to allow this action, and under what scope, before it happened?**
 
 ---
 
@@ -24,133 +29,132 @@ AUCTORISEAL provides:
 
 AUCTORISEAL is **not**:
 
-- a government, regulator, or standards body
-- a compliance certification authority
-- an AI system or autonomous agent
-- a workflow engine for code execution
-- a “safety” guarantee
+* an AI system
+* a workflow engine
+* a policy document
+* a compliance checklist
+* a monitoring or logging tool
 
-It does not decide *what* should happen.  
-It records and enforces **who is allowed to authorize** what happens.
-
----
-
-## The Core Invariant
-
-> If an action required authority, and the authority was not sealed, then the action was **unauthorized**.
+It does not decide *what* to do.
+It decides **who may allow something to be done**.
 
 ---
 
-## Ecosystem Map
+## Core Invariant
 
-- **AUCTORISEAL** — authority & legitimacy (seals, revocation, ledger)
-- **SPEEDKIT** — registry of systems (truth surface)
-- **ADJUTORIX** — governed execution engine (law / enforcement)
-- **Products** — deployed systems (evidence of operation)
-- **Primitives** — libraries/tools (implementation)
+Any system that can:
 
----
+* mutate state
+* deploy code
+* produce financial impact
+* generate externally relied-upon outputs
 
-## Repository Layout
+**MUST be able to prove who authorized the action prior to execution.**
 
-- `docs/` — constitution, glossary, threat model, trust model
-- `protocol/` — versioned schemas and compatibility rules
-- `ledger/` — append-only ledger schema, migrations, integrity verification
-- `seals/` — seal lifecycle logic (issue/validate/revoke)
-- `authority/` — roots, delegation, modes, freeze semantics
-- `integrations/` — adapters for ADJUTORIX/SPEEDKIT and product references
-- `api/` — read-only public interface (OpenAPI, server)
-- `cli/` — operator tools (explicit issuance, revocation, inspections)
-- `ops/` — audit checklist, incident response, backup/restore, decommission
-- `tests/` — protocol compatibility + integrity tests (legitimacy requires tests)
+Post-hoc approval is invalid.
+Implicit authorization is invalid.
+"The system decided" is invalid.
+
+If this proof does not exist, the output is **non-legitimate by definition**.
 
 ---
 
-## Quickstart (Local)
+## Scope
 
-### 1) Prerequisites
-- Python 3.11+
-- SQLite 3
-- (Optional) Docker
+AUCTORISEAL records and verifies:
 
-### 2) Install
-bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-`
+* authority grants (seals)
+* scope and constraints
+* revocations
+* freezes
+* protocol versioning
 
-### 3) Initialize Ledger
+All records are:
 
-bash
-python -m auctoriseal.cli.inspect_ledger --init
-
-
-### 4) Issue a Seal (Operator Action)
-
-bash
-python -m auctoriseal.cli.issue_seal \
-  --issued-to "example-org" \
-  --scope "adjutorix:apply" \
-  --constraints "mode=managed" \
-  --notes "Initial managed apply authority"
-
-
-### 5) Validate a Seal
-
-bash
-python -m auctoriseal.cli.verify_integrity
-python -m auctoriseal.cli.list_seals --active
-
-
-### 6) Run Read-only API
-
-bash
-python -m auctoriseal.api.server --config runtime/config.example.yaml
-
+* append-only
+* tamper-evident
+* replayable
+* auditable
 
 ---
 
-## Public Contract
+## Relationship to Execution
 
-The public contract is defined in:
+AUCTORISEAL does **not** execute actions.
 
-* `protocol/envelope.schema.json`
-* `protocol/seal.schema.json`
-* `protocol/authority.schema.json`
-* `protocol/revocation.schema.json`
-* `protocol/registry.schema.json`
-* `protocol/error.schema.json`
-* `protocol/protocol.md`
+Execution systems (for example, automation engines or AI-driven workflows) may:
 
-If code contradicts protocol, **protocol wins**.
+* run freely
+* experiment
+* fail
 
----
+However, **legitimacy is separate from execution**.
 
-## Operational Posture
+Execution without authority may succeed technically, but it is:
 
-* Ledger is **append-only**.
-* Seals are **revocable**.
-* Public API is **read-only**.
-* Issuance and revocation are **explicit operator actions**.
-* Integrations must treat AUCTORISEAL as a **hard dependency** for legitimacy.
+* non-defensible
+* non-compliant
+* non-repudiable
 
 ---
 
-## Legal / Non-Claims
+## Open vs Authoritative Use
+
+The code in this repository is open and may be used freely.
+
+However:
+
+* **Self-hosted use does not create authority-of-record**
+* **Authority-of-record requires continuity, governance, and retention guarantees**
+
+This distinction is intentional.
+
+---
+
+## Repository Posture
+
+This repository is:
+
+* conservative
+* slow-moving
+* intentionally boring
+
+Changes are limited to:
+
+* security fixes
+* protocol evolution
+* governance updates
+
+If you are looking for rapid iteration, demos, or experimentation, this is not the correct layer.
+
+---
+
+## Governance and Trust
+
+Authority is defined by:
+
+* explicit governance
+* published doctrine
+* immutable history
 
 See:
 
-* `DISCLAIMER.md` (mandatory)
+* `docs/constitution.md`
 * `GOVERNANCE.md`
 * `SECURITY.md`
 
+Trust is earned through **clarity and restraint**, not features.
+
 ---
 
-## License
+## Final Statement
 
-See `LICENSE`.
+AUCTORISEAL does not promise safety.
+It does not promise correctness.
+It does not promise compliance.
 
+It promises one thing only:
 
-::contentReference[oaicite:0]{index=0}
+> **If an action mattered, you can prove who was allowed to authorize it — or prove that no one was.**
 
+Everything else builds on that.
