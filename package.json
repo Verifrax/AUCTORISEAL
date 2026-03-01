@@ -1,0 +1,10 @@
+{
+  "name": "auctoriseal",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "node .verifrax/build.js",
+    "test": "node .verifrax/test.js"
+  }
+}
