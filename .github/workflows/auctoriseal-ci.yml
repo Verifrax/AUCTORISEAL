@@ -1,25 +1,58 @@
 name: auctoriseal-ci
 
 on:
+  workflow_dispatch:
   pull_request:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
-  build_test:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      - uses: actions/setup-python@v5
         with:
-          node-version: 20
-      - name: Build
+          python-version: "3.11"
+
+      - name: Protocol gates
+        shell: bash
         run: |
           set -euo pipefail
-          node -v
-          npm -v || true
-          npm run build
-      - name: Test
+          test -f protocol/protocol.md
+          test -f protocol/seal.schema.json
+          test -f protocol/authority.schema.json
+          test -f protocol/revocation.schema.json
+          python3 - <<'PY'
+import json, pathlib
+req = [
+  "protocol/seal.schema.json",
+  "protocol/authority.schema.json",
+  "protocol/revocation.schema.json",
+  "protocol/envelope.schema.json",
+  "protocol/error.schema.json",
+]
+for p in req:
+    fp = pathlib.Path(p)
+    if not fp.exists():
+        raise SystemExit(f"E_MISSING_{p}")
+    json.loads(fp.read_text(encoding="utf-8"))
+print("OK: schemas parse")
+PY
+
+      - name: Install test deps
+        shell: bash
         run: |
           set -euo pipefail
-          npm run test
+          python3 -m pip install --upgrade pip
+          python3 -m pip install pytest
+
+      - name: Pytest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pytest -q
