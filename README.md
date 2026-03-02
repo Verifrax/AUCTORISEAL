@@ -158,3 +158,11 @@ It promises one thing only:
 > **If an action mattered, you can prove who was allowed to authorize it — or prove that no one was.**
 
 Everything else builds on that.
+
+## Contract
+- issues/rotates authority material under strict policy
+- deterministic issuance records
+- compatible with VERIFRAX evidence + sealing surfaces
+
+## Interfaces
+- CLI / API surface documented in `docs/`
