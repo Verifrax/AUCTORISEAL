@@ -1,168 +1,46 @@
 # AUCTORISEAL
 
-## Authority of Record for Governed Systems
+## Purpose
 
-**AUCTORISEAL** is an authority-of-record system.
-It exists to define, record, and verify **who is allowed to authorize actions** in systems capable of irreversible or externally meaningful effects.
+Authority-layer sealing primitive for Verifrax governance decisions.
 
-> **Use everything freely but if it matters, you must be able to prove who authorized it before execution.**
+## Status
 
-Execution can be automated.
-Decisions that create responsibility cannot.
-
----
-
-## What AUCTORISEAL Is
-
-* An **authority layer**, not an execution engine
-* An **append-only ledger** of authorization decisions
-* A **pre-execution legitimacy system**, not post-incident logging
-* A **deterministic source of truth** for audits, investigations, and replay
-
-AUCTORISEAL answers one question only:
-
-> **Who was authorized to allow this action, and under what scope, before it happened?**
-
----
-
-## What AUCTORISEAL Is Not
-
-AUCTORISEAL is **not**:
-
-* an AI system
-* a workflow engine
-* a policy document
-* a compliance checklist
-* a monitoring or logging tool
-
-It does not decide *what* to do.
-It decides **who may allow something to be done**.
-
----
-
-## Core Invariant
-
-Any system that can:
-
-* mutate state
-* deploy code
-* produce financial impact
-* generate externally relied-upon outputs
-
-**MUST be able to prove who authorized the action prior to execution.**
-
-Post-hoc approval is invalid.
-Implicit authorization is invalid.
-"The system decided" is invalid.
-
-If this proof does not exist, the output is **non-legitimate by definition**.
-
----
+- **Stability**: Experimental
+- **SemVer**: Not guaranteed until v1.0.0
+- **Security**: See **Security** section below
 
 ## Scope
 
-AUCTORISEAL records and verifies:
+- What this repo is responsible for
+- What it explicitly does **not** do
 
-* authority grants (seals)
-* scope and constraints
-* revocations
-* freezes
-* protocol versioning
+## Quickstart
 
-All records are:
+```bash
+# clone
+git clone https://github.com/Verifrax/AUCTORISEAL.git
+cd AUCTORISEAL
 
-* append-only
-* tamper-evident
-* replayable
-* auditable
+# install (adjust if needed)
+# (placeholder) npm install / pnpm install / go test ./... / etc.
+```
 
----
+## Repository layout
 
-## Relationship to Execution
+- `/` Root sources
+- `/.github/` Issue + PR templates
+- `/docs/` Documentation (if present)
 
-AUCTORISEAL does **not** execute actions.
+## Security
 
-Execution systems (for example, automation engines or AI-driven workflows) may:
+- Report vulnerabilities privately: **security@verifrax.org**
+- Do **not** open public issues for sensitive findings
 
-* run freely
-* experiment
-* fail
+## Contributing
 
-However, **legitimacy is separate from execution**.
+See `CONTRIBUTING.md`.
 
-Execution without authority may succeed technically, but it is:
+## License
 
-* non-defensible
-* non-compliant
-* non-repudiable
-
----
-
-## Open vs Authoritative Use
-
-The code in this repository is open and may be used freely.
-
-However:
-
-* **Self-hosted use does not create authority-of-record**
-* **Authority-of-record requires continuity, governance, and retention guarantees**
-
-This distinction is intentional.
-
----
-
-## Repository Posture
-
-This repository is:
-
-* conservative
-* slow-moving
-* intentionally boring
-
-Changes are limited to:
-
-* security fixes
-* protocol evolution
-* governance updates
-
-If you are looking for rapid iteration, demos, or experimentation, this is not the correct layer.
-
----
-
-## Governance and Trust
-
-Authority is defined by:
-
-* explicit governance
-* published doctrine
-* immutable history
-
-See:
-
-* `docs/constitution.md`
-* `GOVERNANCE.md`
-* `SECURITY.md`
-
-Trust is earned through **clarity and restraint**, not features.
-
----
-
-## Final Statement
-
-AUCTORISEAL does not promise safety.
-It does not promise correctness.
-It does not promise compliance.
-
-It promises one thing only:
-
-> **If an action mattered, you can prove who was allowed to authorize it — or prove that no one was.**
-
-Everything else builds on that.
-
-## Contract
-- issues/rotates authority material under strict policy
-- deterministic issuance records
-- compatible with VERIFRAX evidence + sealing surfaces
-
-## Interfaces
-- CLI / API surface documented in `docs/`
+MIT. See `LICENSE`.
