@@ -1,5 +1,4 @@
-name: identity
-on:
+name: Identityon:
   push:
     branches: [ main ]
 permissions:
