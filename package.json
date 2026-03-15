@@ -1,10 +1,60 @@
 {
-  "name": "auctoriseal",
-  "private": true,
-  "version": "0.1.0",
+  "name": "@verifrax/auctoriseal",
+  "version": "0.1.1",
+  "private": false,
+  "description": "Authority sealing primitive for canonical authority ledgers, genesis seal publication, and verifier-visible issuance surfaces in the Verifrax stack.",
   "type": "module",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Verifrax/AUCTORISEAL.git"
+  },
+  "homepage": "https://github.com/Verifrax/AUCTORISEAL",
+  "bugs": {
+    "url": "https://github.com/Verifrax/AUCTORISEAL/issues"
+  },
+  "keywords": [
+    "verifrax",
+    "auctoriseal",
+    "authority",
+    "seal",
+    "ledger",
+    "governance",
+    "verification"
+  ],
+  "files": [
+    ".verifrax/",
+    "api/",
+    "authority/",
+    "authority-ledger.json",
+    "cli/",
+    "docs/",
+    "evidence/",
+    "integrations/",
+    "ledger/",
+    "ops/",
+    "protocol/",
+    "public/genesis/",
+    "runtime/",
+    "seals/",
+    "tests/",
+    "CITATION.cff",
+    "CONTRIBUTING.md",
+    "DISCLAIMER.md",
+    "GOVERNANCE.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md"
+  ],
   "scripts": {
     "build": "node .verifrax/build.js",
-    "test": "node .verifrax/test.js"
+    "test": "node .verifrax/test.js",
+    "pack:check": "npm pack --dry-run"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
