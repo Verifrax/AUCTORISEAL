@@ -1,6 +1,6 @@
 {
   "name": "@verifrax/auctoriseal",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "description": "Authority sealing primitive for canonical authority ledgers, genesis seal publication, and verifier-visible issuance surfaces in the Verifrax stack.",
   "type": "module",
