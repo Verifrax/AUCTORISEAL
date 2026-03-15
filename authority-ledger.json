@@ -31,6 +31,5 @@
       "seq": 1
     }
   ],
-  "ledger_version": 1,
-  "source_db": "public/authority-ledger.db"
+  "ledger_version": 1
 }
