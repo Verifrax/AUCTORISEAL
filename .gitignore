@@ -42,3 +42,5 @@ ledger/*.sqlite3
 
 # Backups
 runtime/backups/
+*.pyc
+public/authority-ledger.db

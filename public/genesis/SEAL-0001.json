@@ -1,0 +1,16 @@
+{
+  "constraints": {},
+  "expires_at": null,
+  "issued_at": 1700000000000,
+  "issued_by": "root.primary",
+  "issued_to": "service.alpha",
+  "metadata": {
+    "notes": "Genesis authority seal"
+  },
+  "protocol": 1,
+  "scope": [
+    "adjutorix:apply"
+  ],
+  "seal_id": "SEAL-0001",
+  "status": "active"
+}
