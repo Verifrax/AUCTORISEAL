@@ -30,5 +30,7 @@
     "verifier_runs": []
   },
   "verdict": "NOT_EXECUTABLE",
-  "verdict_note": "claimed subject is absent, so verifier-backed execution cannot begin"
+  "verdict_note": "historical capture only: this file recorded an earlier absent-state observation and is superseded by evidence/artifact-0003-reexecution/EXECUTION_STATUS.txt",
+  "historical_at_capture": true,
+  "current_truth_status": "SUPERSEDED_BY_ARTIFACT_0003_REEXECUTION"
 }
