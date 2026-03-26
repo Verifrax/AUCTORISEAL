@@ -34,6 +34,8 @@
     "ledger/",
     "ops/",
     "protocol/",
+    "public/authority/",
+    "public/current",
     "public/genesis/",
     "runtime/",
     "seals/",
