@@ -14,12 +14,12 @@ Current declared posture:
 
 - **State:** `NON-FINAL`
 - **Authority posture:** `PUBLISHED`
-- **Seal posture:** `GENESIS PRESENT`
+- **Seal posture:** `HISTORICAL GENESIS MATERIAL PRESENT / NON-CANONICAL FOR CURRENT SEAL BASIS`
 - **Governance posture:** `EXPLICIT`
 - **Compatibility:** `NOT GUARANTEED`
 - **Repository release boundary:** `.verifrax/tags/`
 
-That means AUCTORISEAL publicly exposes authority roots, ledger surfaces, seal schemas, revocation semantics, and governance doctrine, but it must not be described as protocol-final merely because those surfaces are published.
+That means AUCTORISEAL publicly exposes canonical authority-object surfaces, schemas, revocation semantics, and governance doctrine, while genesis seal material and ledger material remain historical and must not be treated as the current canonical seal basis.
 
 ---
 
@@ -59,9 +59,10 @@ Therefore:
 
 The minimum canonical authority surfaces include:
 
-- `authority-ledger.json`
+- `public/authority/AUTHORITY-0001.json`
+- `public/authority/AUTHORITY-0001.digest.txt`
+- `public/authority/AUTHORITY-0001.verify.txt`
 - `authority/roots.yaml`
-- `public/genesis/SEAL-0001.json`
 - `protocol/authority.schema.json`
 - `protocol/seal.schema.json`
 - `protocol/revocation.schema.json`
@@ -69,6 +70,8 @@ The minimum canonical authority surfaces include:
 - `SECURITY.md`
 - `DISCLAIMER.md`
 - `evidence/README.md`
+- `authority-ledger.json` (historical material)
+- `public/genesis/SEAL-0001.json` (historical material)
 
 If these surfaces drift materially from one another, consumers should treat the authority surface as degraded.
 

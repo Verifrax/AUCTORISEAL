@@ -13,12 +13,12 @@ Current declared posture:
 
 - **State:** `NON-FINAL`
 - **Authority posture:** `PUBLISHED`
-- **Seal posture:** `GENESIS PRESENT`
+- **Seal posture:** `HISTORICAL GENESIS MATERIAL PRESENT / NON-CANONICAL FOR CURRENT SEAL BASIS`
 - **Governance posture:** `EXPLICIT`
 - **Compatibility:** `NOT GUARANTEED`
 - **Repository release boundary:** `.verifrax/tags/`
 
-That means AUCTORISEAL publishes the authority roots, authority ledger, seal schemas, revocation surfaces, and governance rules that downstream systems may defer to, but publication alone must not be confused with downstream activation or downstream finality.
+That means AUCTORISEAL publishes canonical authority objects, authority digests, schemas, revocation surfaces, and governance rules that downstream systems may defer to, but historical genesis material must not be confused with the current canonical authority basis.
 
 ---
 
@@ -29,8 +29,11 @@ AUCTORISEAL is the root authority-definition component of the VERIFRAX stack.
 Within its own system boundary, authority is grounded in explicit published surfaces, including:
 
 - `authority/roots.yaml`
-- `authority-ledger.json`
-- `public/genesis/SEAL-0001.json`
+- `public/authority/AUTHORITY-0001.json`
+- `public/authority/AUTHORITY-0001.digest.txt`
+- `public/authority/AUTHORITY-0001.verify.txt`
+- `authority-ledger.json` (historical material)
+- `public/genesis/SEAL-0001.json` (historical material)
 - `protocol/authority.schema.json`
 - `protocol/seal.schema.json`
 - `protocol/revocation.schema.json`

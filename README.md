@@ -11,7 +11,7 @@
 
 Authority sealing primitive for the **VERIFRAX protocol stack**.
 
-AUCTORISEAL publishes canonical authority state, genesis seal surfaces, and governance‑visible authority artifacts used by verifiers to establish protocol‑level authority boundaries.
+AUCTORISEAL publishes canonical authority objects, authority digests, and governance-visible authority artifacts used by verifiers to establish protocol-level authority boundaries.
 
 This repository defines the **authority layer** of the VERIFRAX ecosystem.
 
@@ -23,11 +23,11 @@ AUCTORISEAL exists to make **authority explicit, inspectable, and reproducible**
 
 Instead of implicit repository trust or opaque governance decisions, authority is represented through **public artifacts** such as:
 
-* canonical authority ledger
-* genesis authority seal
+* canonical authority object
+* authority digest and verification procedure
 * authority schemas
-* revocation surfaces
-* freeze semantics
+* historical genesis seal material
+* historical ledger material
 * governance documentation
 
 These artifacts are published so that downstream systems — including **VERIFRAX verifiers** — can determine whether authority conditions are satisfied.
@@ -56,21 +56,38 @@ It defines the **authority surfaces required for truth verification**.
 
 The repository exposes several canonical authority artifacts.
 
-## Authority ledger
+## Historical ledger material
 
 ```
 authority-ledger.json
 ```
 
-Defines the active authority state and authority roots used by the protocol.
+Retained as historical inspectable material. It is not the current canonical authority surface for artifact-0005.
 
-## Genesis authority seal
+## Canonical authority object
+
+```
+public/authority/AUTHORITY-0001.json
+```
+
+Defines the published governed repository authority object used as the canonical public authority surface.
+
+## Authority digest
+
+```
+public/authority/AUTHORITY-0001.digest.txt
+public/authority/AUTHORITY-0001.verify.txt
+```
+
+Publishes the reproducible digest and exact verification procedure for the canonical authority object.
+
+## Historical genesis seal material
 
 ```
 public/genesis/SEAL-0001.json
 ```
 
-Establishes the initial authority issuance boundary.
+Retained as historical inspectable material. It is not the current canonical authority basis for artifact-0005.
 
 ## Authority schemas
 
@@ -154,13 +171,21 @@ CITATION.cff
 
 # Example usage
 
-Inspect the canonical authority ledger:
+Inspect the historical ledger material:
 
 ```
 cat authority-ledger.json
 ```
 
-Inspect the genesis seal:
+Inspect the canonical authority object:
+
+```
+cat public/authority/AUTHORITY-0001.json
+cat public/authority/AUTHORITY-0001.digest.txt
+cat public/authority/AUTHORITY-0001.verify.txt
+```
+
+Inspect the historical genesis seal material:
 
 ```
 cat public/genesis/SEAL-0001.json
