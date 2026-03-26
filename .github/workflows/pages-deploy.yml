@@ -1,0 +1,45 @@
+name: Publish authority surface
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      - name: Verify authority surface inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f public/CNAME
+          test -f public/index.html
+          test -f public/current
+          test -f public/authority/AUTHORITY-0001.json
+          test -f public/authority/AUTHORITY-0001.digest.txt
+          test -f public/authority/AUTHORITY-0001.verify.txt
+          grep -Fx "auctoriseal.verifrax.net" public/CNAME
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
