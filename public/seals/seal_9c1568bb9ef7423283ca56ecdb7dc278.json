@@ -1,0 +1,22 @@
+{
+  "seal_id": "seal_9c1568bb9ef7423283ca56ecdb7dc278",
+  "issued_by": "root.primary",
+  "issued_to": "corpiform-artifact-0005",
+  "scope": [
+    "action:MAIL_DISPATCH",
+    "adapter:smtp",
+    "body:mail"
+  ],
+  "constraints": {
+    "artifact": "artifact-0005",
+    "boundary": "governed-execution",
+    "single_use": "true"
+  },
+  "issued_at": 1774600914344,
+  "expires_at": null,
+  "protocol": 1,
+  "status": "active",
+  "metadata": {
+    "notes": "artifact-0005 live non-fixture issuance candidate"
+  }
+}

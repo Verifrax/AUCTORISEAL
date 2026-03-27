@@ -1,0 +1,12 @@
+OBJECT: public/seals/seal_9c1568bb9ef7423283ca56ecdb7dc278.json
+DIGEST_FILE: public/seals/seal_9c1568bb9ef7423283ca56ecdb7dc278.digest.txt
+ALGORITHM: sha256
+CANONICALIZATION: json sort_keys=true separators=(,,:) ensure_ascii=false
+REPRODUCE:
+python3 - <<PY
+import json, hashlib, pathlib
+p = pathlib.Path("public/seals/seal_9c1568bb9ef7423283ca56ecdb7dc278.json")
+obj = json.loads(p.read_text())
+canonical = json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+print(hashlib.sha256(canonical.encode("utf-8")).hexdigest())
+PY
