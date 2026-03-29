@@ -1,5 +1,14 @@
 # AUCTORISEAL
 
+![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![Role](https://img.shields.io/badge/role-authority%20surface-111111)
+![npm](https://img.shields.io/npm/v/@verifrax/auctoriseal)
+![CI](https://github.com/Verifrax/AUCTORISEAL/actions/workflows/auctoriseal-ci.yml/badge.svg?branch=main)
+![Identity](https://github.com/Verifrax/AUCTORISEAL/actions/workflows/identity.yml/badge.svg?branch=main)
+![Determinism](https://github.com/Verifrax/AUCTORISEAL/actions/workflows/determinism-check.yml/badge.svg?branch=main)
+![Deploy](https://github.com/Verifrax/AUCTORISEAL/actions/workflows/pages-deploy.yml/badge.svg?branch=main)
+![Host](https://img.shields.io/badge/host-auctoriseal.verifrax.net-1f6feb)
+
 Authority issuance and authority reference surface for the governed Verifrax system.
 
 ## Status
