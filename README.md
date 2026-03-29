@@ -1,312 +1,260 @@
 # AUCTORISEAL
 
-![CI](https://img.shields.io/github/actions/workflow/status/Verifrax/AUCTORISEAL/auctoriseal-ci.yml?branch=main\&label=CI)
-![Determinism](https://img.shields.io/github/actions/workflow/status/Verifrax/AUCTORISEAL/determinism-check.yml?branch=main\&label=determinism)
-![Identity](https://img.shields.io/github/actions/workflow/status/Verifrax/AUCTORISEAL/identity.yml?branch=main\&label=identity)
-![License](https://img.shields.io/badge/license-Apache--2.0-blue)
-![npm](https://img.shields.io/npm/v/@verifrax/auctoriseal)
-![npm downloads](https://img.shields.io/npm/dm/@verifrax/auctoriseal)
-![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
-![Protocol](https://img.shields.io/badge/protocol-Verifrax-black)
+Authority issuance and authority reference surface for the governed Verifrax system.
 
-Authority sealing primitive for the **VERIFRAX protocol stack**.
+## Status
 
-AUCTORISEAL publishes canonical authority objects, authority digests, and governance-visible authority artifacts used by verifiers to establish protocol-level authority boundaries.
+* Layer: Authority
+* Repository class: governed authority surface
+* Public host ownership: `auctoriseal.verifrax.net`
+* npm package: `@verifrax/auctoriseal`
+* Package surface: authority issuance implementation surface
+* License: Apache License Version 2.0
 
-This repository defines the **authority layer** of the VERIFRAX ecosystem.
+## One-sentence role
 
----
+AUCTORISEAL records, publishes, and verifies the authority objects that define who may authorize governed Verifrax execution before CORPIFORM runs and before VERIFRAX or public verifier surfaces evaluate the resulting evidence.
 
-# Overview
+## What this repository is
 
-AUCTORISEAL exists to make **authority explicit, inspectable, and reproducible**.
+This repository is the authority layer of the Verifrax stack.
 
-Instead of implicit repository trust or opaque governance decisions, authority is represented through **public artifacts** such as:
+It exists to provide:
 
-* canonical authority object
-* authority digest and verification procedure
-* authority schemas
-* historical genesis seal material
-* historical ledger material
-* governance documentation
+* authority object issuance
+* authority object publication
+* authority digest publication
+* authority verification material
+* authority/governance linkage
+* revocation and freeze reference material where declared
+* public authority artifacts that downstream systems can inspect without hidden trust
 
-These artifacts are published so that downstream systems — including **VERIFRAX verifiers** — can determine whether authority conditions are satisfied.
+This repository is the place where authority becomes explicit.
 
-**AUCTORISEAL does not assert truth — it publishes the canonical authority surfaces that VERIFRAX verifiers use to determine whether protocol authority conditions are satisfied.**
+## What this repository is not
 
----
+This repository is not:
 
-# Position in the VERIFRAX stack
+* the authored protocol repository
+* the derived specification publication surface
+* the governed execution runtime
+* the public proof publication surface
+* the public verifier UI
+* the intake surface
+* the commercial landing surface
+* the evidence root for artifact registration
+* a generic trust claim by prose alone
 
-The Verifrax architecture separates responsibility across layers:
+AUCTORISEAL does not:
 
-| Layer            | Responsibility                                  |
-| ---------------- | ----------------------------------------------- |
-| **AUCTORISEAL**  | Defines and publishes authority state           |
-| **VERIFRAX**     | Verifies evidence bundles and protocol outcomes |
-| **Integrations** | Consume verified authority state                |
+* execute governed runtime actions
+* produce CORPIFORM receipts
+* verify final truth claims by itself
+* replace VERIFRAX evidence judgment
+* publish marketing copy as authority
 
-AUCTORISEAL does **not determine truth**.
+Authority here means authorization boundary, not truth verdict.
 
-It defines the **authority surfaces required for truth verification**.
+## Authority model
 
----
+AUCTORISEAL defines who may authorize governed actions and under what scope.
 
-# Core authority artifacts
+Its outputs are meant to be machine-checkable.
 
-The repository exposes several canonical authority artifacts.
+The required authority direction across the governed system is:
 
-## Historical ledger material
+* VERIFRAX authors normative source material.
+* VERIFRAX-SPEC publishes derived specification artifacts from VERIFRAX.
+* Derived artifacts are not upstream authority.
+* Governance authority is external and bound through AUCTORISEAL plus the governed repo set in `.github`.
 
-```
-authority-ledger.json
-```
+AUCTORISEAL publishes authority artifacts used by:
 
-Retained as historical inspectable material. It is not the current canonical authority surface for artifact-0005.
+* `.github` governance linkage surfaces
+* CORPIFORM execution admission and receipt binding
+* VERIFRAX evidence and chain interpretation
+* VERIFRAX-verify and other verifier surfaces where authority references must be inspectable
 
-## Canonical authority object
+## Stack position
 
-```
-public/authority/AUTHORITY-0001.json
-```
+Read the authority path in this order:
 
-Defines the published governed repository authority object used as the canonical public authority surface.
+1. `.github` — governed repository boundary and governance linkage
+2. `AUCTORISEAL` — authority issuance and authority publication
+3. `CORPIFORM` — governed execution under recorded authority
+4. `VERIFRAX` — evidence root, verification boundary, and artifact chain
+5. `VERIFRAX-verify` — public verification surface
 
-## Authority digest
+AUCTORISEAL sits above execution and below evidence interpretation.
 
-```
-public/authority/AUTHORITY-0001.digest.txt
-public/authority/AUTHORITY-0001.verify.txt
-```
+## Public host ownership
 
-Publishes the reproducible digest and exact verification procedure for the canonical authority object.
+This repository owns the authority reference surface for:
 
-## Historical genesis seal material
+* `https://auctoriseal.verifrax.net/`
 
-```
-public/genesis/SEAL-0001.json
-```
+That surface must remain authority-only.
 
-Retained as historical inspectable material. It is not the current canonical authority basis for artifact-0005.
+It must not become:
 
-## Authority schemas
+* API execution
+* proof publication
+* verifier UI
+* intake flow
+* commercial landing
+* generic docs mirror
 
-```
-protocol/authority.schema.json
-protocol/seal.schema.json
-```
+## Public artifact surface
 
-Formal schema definitions for authority objects and seals.
+Authority artifacts published from this repository must be sufficient for an outsider to:
 
-## Governance documentation
+* fetch the current authority object
+* inspect the governed boundary it declares
+* recompute the published authority digest
+* compare the published digest with the raw authority object
+* inspect the authority version/schema reference
 
-```
-GOVERNANCE.md
-DISCLAIMER.md
-SECURITY.md
-```
+At minimum, the repository must keep authority publication material aligned across:
 
-Documents governance structure, operational assumptions, and disclosure policies.
+* repository paths under the public authority surface
+* `.github/governance/AUTHORITY_CURRENT.txt`
+* `.github/governance/AUTHORITY_DIGEST.txt`
+* `.github/governance/AUTHORITY_VERSION.txt`
+* any VERIFRAX evidence entry that binds execution to authority
 
----
+## Artifact-0005 alignment
 
-# npm package
+AUCTORISEAL is load-bearing for artifact-0005.
 
-The npm package mirrors the public repository boundary so that authority artifacts can be consumed as a dependency.
+For artifact-0005 to remain truthful, this repository must provide a public canonical authority object and reproducible authority digest that can be bound to:
 
-Install:
+* `.github` governed repository manifests
+* the exact governed execution run by CORPIFORM
+* the recorded receipt referenced by VERIFRAX evidence
+* matching verifier interpretation across maintained verification surfaces
 
-```
-npm install @verifrax/auctoriseal
-```
+AUCTORISEAL must not describe artifact-0005 as sealed, complete, or broader than the VERIFRAX evidence root proves.
 
-This package includes:
+AUCTORISEAL must make the authority part of artifact-0005 inspectable.
 
-* authority ledger
-* genesis seal
-* protocol schemas
-* CLI utilities
-* governance documents
-* integration adapters
-* verifier evidence samples
+## Inputs and outputs
 
-The npm package is **not a runtime authority server**.
+### Inputs
 
-It is a **distribution surface for authority artifacts**.
+This repository consumes:
 
----
+* governance boundary truth from `.github`
+* declared authority scope and issuer inputs
+* schema and implementation constraints required for authority publication
 
-# Repository structure
+### Outputs
 
-```
-.verifrax/
-api/
-authority/
-cli/
-docs/
-evidence/
-integrations/
-ledger/
-ops/
-protocol/
-public/genesis/
-runtime/
-seals/
-tests/
-```
+This repository produces:
 
-Additional root materials:
+* authority objects
+* authority digests
+* authority verification instructions
+* revocation/freeze/reference material where declared
+* public authority reference artifacts
 
-```
-README.md
-LICENSE
-SECURITY.md
-GOVERNANCE.md
-CONTRIBUTING.md
-DISCLAIMER.md
-CITATION.cff
-```
+It does not produce:
 
----
+* governed execution receipts
+* verifier verdicts
+* proof certificates
+* evidence-chain registration entries
 
-# Example usage
+## Verifier relationship
 
-Inspect the historical ledger material:
+Verifier surfaces must be able to inspect authority without trusting a maintainer statement.
 
-```
-cat authority-ledger.json
-```
+That means AUCTORISEAL must remain legible to both:
 
-Inspect the canonical authority object:
+* `VERIFRAX` as the evidence and verification boundary
+* `VERIFRAX-verify` as the public verification surface
 
-```
-cat public/authority/AUTHORITY-0001.json
-cat public/authority/AUTHORITY-0001.digest.txt
-cat public/authority/AUTHORITY-0001.verify.txt
-```
+If a verifier cannot discover which authority object governed an execution boundary, the authority layer is incomplete.
 
-Inspect the historical genesis seal material:
+## Repository reading rule
 
-```
-cat public/genesis/SEAL-0001.json
-```
+Read this repository for authority scope and authority publication.
 
-Review authority schemas:
+Read these neighboring repositories for the rest of the path:
 
-```
-cat protocol/authority.schema.json
-cat protocol/seal.schema.json
-```
+* [`.github`](https://github.com/Verifrax/.github) — governance root
+* [`CORPIFORM`](https://github.com/Verifrax/CORPIFORM) — governed execution and receipts
+* [`VERIFRAX`](https://github.com/Verifrax/VERIFRAX) — evidence root and artifact chain
+* [`VERIFRAX-verify`](https://github.com/Verifrax/VERIFRAX-verify) — public verification surface
+* [`VERIFRAX-SPEC`](https://github.com/Verifrax/VERIFRAX-SPEC) — derived specification publication
+* [`VERIFRAX-DOCS`](https://github.com/Verifrax/VERIFRAX-DOCS) — documentation/reference surface
 
-Run repository checks:
+## CI and integrity expectations
 
-```
-npm test
-npm run build
-npm run pack:check
-```
+Any CI described here must be real and load-bearing.
 
----
+At minimum, the repository should enforce real checks for:
 
-# Authority visibility principle
+* identity alignment
+* package/version alignment where a package exists
+* authority-example digest reproducibility
+* published authority-path integrity
+* documentation/path consistency for authority artifacts
 
-AUCTORISEAL follows a strict rule:
+This README must not use badge theater to imply checks that do not actually verify authority properties.
 
-> Authority must be observable through published artifacts.
 
-Consumers should never rely on:
+## Verifrax system path labels
 
-* hidden governance
-* undocumented authority changes
-* implicit repository trust
+The governed Verifrax path that this README must stay compatible with is:
 
-Authority state must be verifiable through:
+1. `.github` — organization governance and governed repository boundary
+2. `AUCTORISEAL` — authority issuance and public authority reference
+3. `CORPIFORM` — governed execution and receipt emission
+4. `VERIFRAX` — authored protocol, evidence root, and artifact-chain registration boundary
+5. `VERIFRAX-SPEC` — derived specification publication surface
+6. `VERIFRAX-PROFILES` — deterministic profile-constraint surface
+7. `VERIFRAX-SAMPLES` — pinned sample and reproducibility surface
+8. `VERIFRAX-verify` — public verification repository and UI boundary
+9. `VERIFRAX-DOCS` — explanatory documentation surface
+10. `cicullis` — enforcement boundary
+11. `proof` — proof publication surface
+12. `SIGILLARIUM` — seal and archive reference surface
+13. `apply` — intake surface
 
-* ledger presence
-* seal presence
-* schema compatibility
-* repository publication surfaces
+The live host-label map that must remain explicit and non-contradictory is:
 
----
+* `https://api.verifrax.net/` — execution surface
+* `https://proof.verifrax.net/` — proof publication surface
+* `https://auctoriseal.verifrax.net/` — authority issuance and authority reference surface
+* `https://corpiform.verifrax.net/` — runtime and receipt reference surface
+* `https://cicullis.verifrax.net/` — enforcement reference surface
+* `https://verify.verifrax.net/` — public verification surface
+* `https://sigillarium.verifrax.net/` — seal and archive reference surface
+* `https://apply.verifrax.net/` — intake surface
+* `https://docs.verifrax.net/` — documentation surface
 
-# Security model
+This README must remain compatible with `artifact-0005` as the load-bearing authority → execution → verification → evidence boundary without claiming that this repository alone authors, proves, seals, or registers `artifact-0005` unless that role is actually true for this repository.
 
-Security is based on **public inspectability**.
 
-Consumers should verify:
+## Security
 
-* authority ledger presence
-* genesis seal integrity
-* schema compatibility
-* release boundary consistency
+Do not disclose private keys, signing material, revocation secrets, unpublished emergency procedures, or hidden authority inputs in public issues.
 
-Sensitive vulnerabilities should not be disclosed publicly.
+Authority compromise is not a documentation bug. It is a system event and must be handled through the declared security and governance process.
 
-Security contact:
+## Contributing
 
-```
-security@verifrax.net
-```
+Changes to this repository change how execution legitimacy is established.
 
----
+A contribution is wrong if it:
 
-# Development
+* blurs authority with truth judgment
+* makes authority depend on prose alone
+* breaks digest reproducibility
+* weakens governance linkage
+* creates ambiguity between current and historical authority material
+* introduces future-state claims as present truth
 
-Clone the repository:
+## License
 
-```
-git clone https://github.com/Verifrax/AUCTORISEAL.git
-cd AUCTORISEAL
-```
-
-Run checks:
-
-```
-npm test
-npm run build
-npm run pack:check
-```
-
----
-
-# Governance
-
-See:
-
-```
-GOVERNANCE.md
-```
-
----
-
-# Contributing
-
-See:
-
-```
-CONTRIBUTING.md
-```
-
----
-
-# Disclaimer
-
-See:
-
-```
-DISCLAIMER.md
-```
-
----
-
-# License
-
-Licensed under the **Apache License 2.0**.
-
-See `LICENSE` for the full license text.
-
----
-
-# Repository
-
-[https://github.com/Verifrax/AUCTORISEAL](https://github.com/Verifrax/AUCTORISEAL)
+Apache License Version 2.0. See `LICENSE`.
