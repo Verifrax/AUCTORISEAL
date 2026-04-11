@@ -3,19 +3,19 @@
   "repo": "AUCTORISEAL",
   "hostClass": "reference",
   "role": "authority",
-  "title": "AUCTORISEAL",
-  "description": "Authority issuance and authority reference surface for VERIFRAX.",
-  "deployMode": "preview-only",
+  "title": "AUCTORISEAL Authority Surface",
+  "description": "Authority reference surface for the VERIFRAX public perimeter. This surface publishes authority reference only. It does not execute runtime, publish proof, determine verification truth, or accept intake.",
+  "deployMode": "static-root",
   "adjacentHosts": {
+    "Root": "https://www.verifrax.net",
+    "Docs": "https://docs.verifrax.net",
+    "Proof": "https://proof.verifrax.net",
+    "Verify": "https://verify.verifrax.net",
     "Execution": "https://api.verifrax.net",
-    "Proof publication": "https://proof.verifrax.net",
-    "Verification": "https://verify.verifrax.net",
-    "Authority": "https://auctoriseal.verifrax.net",
-    "Runtime reference": "https://corpiform.verifrax.net",
-    "Enforcement reference": "https://cicullis.verifrax.net",
-    "Seal archive": "https://sigillarium.verifrax.net",
-    "Intake": "https://apply.verifrax.net",
-    "Documentation": "https://docs.verifrax.net",
-    "Status": "https://status.verifrax.net"
+    "Runtime": "https://corpiform.verifrax.net",
+    "Enforcement": "https://cicullis.verifrax.net",
+    "Archive": "https://sigillarium.verifrax.net",
+    "Status": "https://status.verifrax.net",
+    "Apply": "https://apply.verifrax.net"
   }
 }
