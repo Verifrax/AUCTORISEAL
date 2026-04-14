@@ -1,5 +1,8 @@
 # AUCTORISEAL
 
+Package: @verifrax/auctoriseal
+Repository: Verifrax/AUCTORISEAL
+
 AUCTORISEAL is the Verifrax authority-issuance boundary: the public surface that defines authority issuance, authority reference, and authority binding posture without becoming constitutional law, canonical world-state, reconciliation, sovereign cognition, execution, verification, proof publication, or intake.
 
 ## Status
