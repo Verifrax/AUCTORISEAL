@@ -7,9 +7,9 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Verifrax/AUCTORISEAL.git"
+    "url": "https://github.com/Verifrax/AUCTORISEAL.git"
   },
-  "homepage": "https://github.com/Verifrax/AUCTORISEAL",
+  "homepage": "https://github.com/Verifrax/AUCTORISEAL#readme",
   "bugs": {
     "url": "https://github.com/Verifrax/AUCTORISEAL/issues"
   },
