@@ -1,0 +1,28 @@
+{
+  "object_type": "AuthorityObject",
+  "authority_object_id": "authority-object-0001",
+  "status": "ACTIVE_TRUTH",
+  "claim_class_ref": "https://github.com/Verifrax/SYNTAGMARIUM/blob/main/claim-classes/authority-object.json",
+  "canonical_publication_ref": "public/authority/AUTHORITY-0001.json",
+  "canonical_digest_ref": "public/authority/AUTHORITY-0001.digest.txt",
+  "canonical_verify_ref": "public/authority/AUTHORITY-0001.verify.txt",
+  "schema_ref": "protocol/authority.schema.json",
+  "seal_schema_ref": "protocol/seal.schema.json",
+  "revocation_schema_ref": "protocol/revocation.schema.json",
+  "roots_ref": "authority/roots.yaml",
+  "historical_archive_ref": "authorities/history/",
+  "authority_id": "AUTHORITY-0001-VERIFRAX",
+  "authority_type": "governed-repository-authority",
+  "system": "AUCTORISEAL",
+  "protocol": 1,
+  "schema_version": 1,
+  "issued_by": "root.primary",
+  "issued_at": 1700000000000,
+  "finality": "non-final",
+  "subject_ref": "public/authority/AUTHORITY-0001.json",
+  "governed_repo_set_ref": "github.com/Verifrax/.github/governance/GOVERNED_REPOS.txt",
+  "notes": [
+    "Current machine-readable authority-object entry surface for the active AUCTORISEAL authority boundary.",
+    "Historical genesis seal material and authority-ledger material remain historical and must not be treated as the current canonical authority basis."
+  ]
+}

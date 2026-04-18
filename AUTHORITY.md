@@ -32,6 +32,7 @@ Within its own system boundary, authority is grounded in explicit published surf
 - `public/authority/AUTHORITY-0001.json`
 - `public/authority/AUTHORITY-0001.digest.txt`
 - `public/authority/AUTHORITY-0001.verify.txt`
+- `authorities/current/authority-object-0001.json`
 - `authority-ledger.json` (historical material)
 - `public/genesis/SEAL-0001.json` (historical material)
 - `protocol/authority.schema.json`
@@ -39,6 +40,12 @@ Within its own system boundary, authority is grounded in explicit published surf
 - `protocol/revocation.schema.json`
 
 If authority is not represented through those canonical published surfaces, it must not be treated as valid.
+
+Current authority-object entry surface:
+
+- `authorities/current/authority-object-0001.json`
+
+Historical authority-object entry surfaces must live only under `authorities/history/`.
 
 ---
 
