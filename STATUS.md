@@ -62,6 +62,7 @@ The minimum canonical authority surfaces include:
 - `public/authority/AUTHORITY-0001.json`
 - `public/authority/AUTHORITY-0001.digest.txt`
 - `public/authority/AUTHORITY-0001.verify.txt`
+- `authorities/current/authority-object-0001.json`
 - `authority/roots.yaml`
 - `protocol/authority.schema.json`
 - `protocol/seal.schema.json`

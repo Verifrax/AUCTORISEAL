@@ -32,6 +32,7 @@ It does not replace adjacent sovereign boundaries.
 - preserves authority-reference language as a bounded sovereign function
 - provides a clean authority boundary for adjacent repositories and public readers
 - anchors authority issuance as distinct from law, state, cognition, execution, verification, proof publication, and intake
+- publishes the current authority-object entry surface for the active authority boundary
 
 ## What it does not do
 
@@ -67,7 +68,7 @@ That separation must remain explicit.
 
 ## Public surface
 
-The public surface of this repository is its repository identity, README boundary, and any explicitly published authority materials carried by this repository.
+The public surface of this repository is its repository identity, README boundary, the current authority-object entry surface, and any explicitly published authority materials carried by this repository.
 
 Publication here is not doctrine.
 Publication here is not state.
@@ -110,6 +111,12 @@ That does not by itself mean:
 Authority issuance is not execution.
 Authority issuance is not verification.
 Authority issuance is not proof publication.
+
+## Authority-object entry surface
+
+- current active authority-object entry surface: `authorities/current/authority-object-0001.json`
+- historical authority-object archive: `authorities/history/`
+- this object binds the current AUCTORISEAL authority boundary to one machine-readable current authority-object surface
 
 ## Not this
 
