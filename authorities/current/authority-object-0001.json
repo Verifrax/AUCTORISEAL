@@ -43,5 +43,22 @@
   "governance_root_ref": "https://github.com/Verifrax/.github",
   "history_ref": "authorities/history/",
   "continuity_ref": "https://github.com/Verifrax/VERIFRAX/blob/main/evidence/continuity/current/continuity-object-0001.json",
-  "transfer_ref": "https://github.com/Verifrax/VERIFRAX/blob/main/evidence/transfer/current/transfer-object-0001.json"
+  "transfer_ref": "https://github.com/Verifrax/VERIFRAX/blob/main/evidence/transfer/current/transfer-object-0001.json",
+  "governed_scope": [
+    {
+      "scope_id": "verifrax-governed-repositories",
+      "scope_type": "repository_set",
+      "description": "Governed Verifrax repository authority boundary bound by the current public authority object.",
+      "members": [
+        "Verifrax/VERIFRAX",
+        "Verifrax/SYNTAGMARIUM",
+        "Verifrax/ORBISTIUM",
+        "Verifrax/AUCTORISEAL",
+        "Verifrax/CONSONORIUM",
+        "Verifrax/CORPIFORM",
+        "Verifrax/ANAGNORIUM",
+        "Verifrax/REGRESSORIUM"
+      ]
+    }
+  ]
 }
