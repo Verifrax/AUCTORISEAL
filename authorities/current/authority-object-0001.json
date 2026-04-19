@@ -23,6 +23,25 @@
   "governed_repo_set_ref": "github.com/Verifrax/.github/governance/GOVERNED_REPOS.txt",
   "notes": [
     "Current machine-readable authority-object entry surface for the active AUCTORISEAL authority boundary.",
-    "Historical genesis seal material and authority-ledger material remain historical and must not be treated as the current canonical authority basis."
-  ]
+    "Historical genesis seal material and authority-ledger material remain historical and must not be treated as the current canonical authority basis.",
+    "Current active authority object for the governed Verifrax repository set.",
+    "This object binds governance-root reading, governed repository scope, continuity reading, and transfer reading without creating a second authority line."
+  ],
+  "authority_digest": "91e02d4e6bb73aa8f434b8baa072bac15ae31447d9e06a526ecb0e2a42315808",
+  "governed_repositories": [
+    "Verifrax/.github",
+    "Verifrax/SYNTAGMARIUM",
+    "Verifrax/ORBISTIUM",
+    "Verifrax/CONSONORIUM",
+    "Verifrax/TACHYRIUM",
+    "Verifrax/AUCTORISEAL",
+    "Verifrax/CORPIFORM",
+    "Verifrax/VERIFRAX",
+    "Verifrax/ANAGNORIUM",
+    "Verifrax/REGRESSORIUM"
+  ],
+  "governance_root_ref": "https://github.com/Verifrax/.github",
+  "history_ref": "authorities/history/",
+  "continuity_ref": "https://github.com/Verifrax/VERIFRAX/blob/main/evidence/continuity/current/continuity-object-0001.json",
+  "transfer_ref": "https://github.com/Verifrax/VERIFRAX/blob/main/evidence/transfer/current/transfer-object-0001.json"
 }
