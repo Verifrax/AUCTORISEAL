@@ -1,10 +1,10 @@
 {
   "name": "@verifrax/auctoriseal",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "description": "Authority sealing primitive for canonical authority ledgers, genesis seal publication, and verifier-visible issuance surfaces in the Verifrax stack.",
   "type": "module",
-  "license": "Apache-2.0",
+  "license": "AGPL-3.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Verifrax/AUCTORISEAL.git"
