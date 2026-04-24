@@ -1,5 +1,7 @@
 # AUCTORISEAL
 
+* License: GNU General Public License v3.0
+
 Package: @verifrax/auctoriseal
 Repository: Verifrax/AUCTORISEAL
 
@@ -131,4 +133,4 @@ AUCTORISEAL is not intake.
 
 ## License
 
-Apache License Version 2.0
+This repository is licensed under the GNU General Public License v3.0. See `LICENSE`.
