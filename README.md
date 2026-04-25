@@ -133,4 +133,6 @@ AUCTORISEAL is not intake.
 
 ## License
 
-This repository is licensed under the GNU General Public License v3.0. See `LICENSE`.
+This repository is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
+
+This license applies to the repository source surface. Package metadata, README wording, and public package pages are subordinate to the repository license file and the accepted Verifrax perimeter truth.
