@@ -1,13 +1,15 @@
 {
-  "object_type": "AuthorityIndex",
+  "object_type": "AuthorityObjectIndex",
   "status": "ACTIVE_TRUTH",
-  "historical": false,
+  "governing_boundary": "AUCTORISEAL",
   "current_authority_object_ref": "authorities/current/authority-object-0001.json",
   "entries": [
     {
-      "authority_id": "AUTHORITY-0001-VERIFRAX",
+      "authority_object_id": "authority-object-0001",
       "path": "authorities/current/authority-object-0001.json",
-      "authority_digest": "91e02d4e6bb73aa8f434b8baa072bac15ae31447d9e06a526ecb0e2a42315808"
+      "status": "ACTIVE_TRUTH",
+      "scope": "artifact-0005 minimum governed object chain"
     }
-  ]
+  ],
+  "historical_archive_ref": "authorities/history/"
 }
