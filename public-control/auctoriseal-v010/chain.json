@@ -1,5 +1,5 @@
 {
-  "state": "AUCTORISEAL_V010_PUBLIC_CONTROL_CHAIN_OPEN",
+  "state": "AUCTORISEAL_V010_PUBLIC_CONTROL_CHAIN_CLOSED",
   "subsystem": "AUCTORISEAL_V010",
   "chamber": "AUCTORISEAL",
   "role": "AUTHORITY",
@@ -44,6 +44,17 @@
     "real_writer_claimed": false,
     "final_verification_claimed": false
   },
-  "next_valid_action": "PUBLISH_AUCTORISEAL_V010_PUBLIC_CONTROL_SEAL",
-  "system_complete": false
+  "next_valid_action": "UPDATE_GLOBAL_STATUS_BOARD_WITH_AUCTORISEAL_V010_PUBLIC_CONTROL_CLOSURE",
+  "system_complete": false,
+  "closure_state": "AUCTORISEAL_V010_PUBLIC_CONTROL_CLOSURE",
+  "closure_result": "AUCTORISEAL_V010_PUBLIC_CONTROL_CHAIN_CLOSED",
+  "source_public_control_receipt_sha": "f055eb7fcda507fdd4c61e606704e3c043343862",
+  "source_public_control_root_binding_sha": "91d29595629510402ae60d0934f58fb1630ace99",
+  "source_status_public_control_seal_sha": "b0187235033d0be8b72a61b3d2867650231a18b9",
+  "authorization_granted": false,
+  "execution_performed": false,
+  "real_writer_asserted": false,
+  "token_persistence": false,
+  "truth_mutation": false,
+  "final_verification_asserted": false
 }

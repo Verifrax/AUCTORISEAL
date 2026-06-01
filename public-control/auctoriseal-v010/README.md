@@ -1,31 +1,37 @@
-# AUCTORISEAL v0.1.0 Public Control Chain
+# AUCTORISEAL v0.1.0 public control
 
-State: `AUCTORISEAL_V010_PUBLIC_CONTROL_CHAIN_OPEN`
+State: `AUCTORISEAL_V010_PUBLIC_CONTROL_CLOSURE`
+
+Chain state: `AUCTORISEAL_V010_PUBLIC_CONTROL_CHAIN_CLOSED`
+
+Closure result: `AUCTORISEAL_V010_PUBLIC_CONTROL_CHAIN_CLOSED`
 
 Answers: `WHAT_AUTHORITY_IS_LAWFUL`
 
-Source intake SHA: `c2547af5de9e5498ce4b9488cb818cb74d31bab0`
+Source public control receipt SHA: `f055eb7fcda507fdd4c61e606704e3c043343862`
 
-Source queue SHA: `1601e6eef97553e1d20daa6527605f596335a72d`
+Source root binding SHA: `91d29595629510402ae60d0934f58fb1630ace99`
 
-Source gate evaluation SHA: `0b4d71ff89e1b279f4c55637bb246b08c50e7ab1`
+Source status seal SHA: `b0187235033d0be8b72a61b3d2867650231a18b9`
 
-Source gate register SHA: `ca60330031980218104f6a4057ae640033533330`
+Source public control chain SHA: `cecdc9b4ebff01d138a7a108351d5be796c8ee9a`
 
-Source registry SHA: `23c51c5c574fcc88f81978f4d2891ea296bb32f8`
-
-Source global board SHA: `e16c0833f1c15afde835189933693f5e563a3a42`
+Source public control intake SHA: `c2547af5de9e5498ce4b9488cb818cb74d31bab0`
 
 Previous TACHYRIUM closure SHA: `da7622fef65afd0a6939eb91d3377a8fb7a19c79`
 
-Boundary:
-- no authorization grant
-- no execution
-- no truth mutation
-- no token persistence
-- no real writer
-- no final verification
+No authorization grant: `true`
 
-Next valid action: `PUBLISH_AUCTORISEAL_V010_PUBLIC_CONTROL_SEAL`
+No execution: `true`
+
+No real writer: `true`
+
+No token persistence: `true`
+
+No truth mutation: `true`
+
+Final verification asserted: `false`
 
 System complete: `false`
+
+Next valid action: `UPDATE_GLOBAL_STATUS_BOARD_WITH_AUCTORISEAL_V010_PUBLIC_CONTROL_CLOSURE`
